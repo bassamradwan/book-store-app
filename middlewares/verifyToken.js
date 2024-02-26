@@ -4,15 +4,15 @@ const jwt= require('jsonwebtoken');
 function verifyToken(req, res, next) {
     const token = req.headers.token;
     if(token){
-        try {
-            const decoded = jwt.verify(token,process.env.JWT_SECRET_KEY);
-            red.user = decoded;
+        try {   
+            const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+            req.user = decoded;
             next();
         } catch (error) {
-            res.status(401).json({message:"Invalid token"})
+            res.status(401).json({message:console.error(error)})
         }
     }else{
-        res.status(401).json({message:"Invalid token"})
+        res.status(401).json({message:"Invalid token else"})
     }
 };
 
