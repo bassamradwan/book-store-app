@@ -37,4 +37,4 @@ app.use(errorHandler);
 
 //runing the server
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Server is running in ${process.env.MODE_ENV} mode http://localhost:5000`));
+app.listen(port, () => console.log(`Server is running in ${process.env.MODE_ENV|| 'development'} mode http://localhost:5000`));
