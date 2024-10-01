@@ -1,7 +1,4 @@
-const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { verifyTokenAndAdmin } = require('../middlewares/verifyToken');
-const router = express.Router();
 const { Author, validateCreateAuthor, validateUpdateAuthor } = require('../models/Authors');
 
 
