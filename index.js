@@ -24,6 +24,9 @@ app.use(cors());
 app.set("view engine", "ejs");
 
 // Routes
+app.use("/",(res,req)=>{
+    res.send("Welcome")
+})
 app.use("/api/books", require("./routes/books"));
 app.use("/api/authors", require("./routes/authors"));
 app.use("/api/auth", require("./routes/auth"));
