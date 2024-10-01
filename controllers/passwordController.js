@@ -35,6 +35,7 @@ const link = `http://localhost:5000/password/reset-password/${user.id}/${token}`
 res.send(`Click on the Link: <a href="${link}">${link}</a>`);
 
 
+
 // TODO:Send email to the user
     });
 
