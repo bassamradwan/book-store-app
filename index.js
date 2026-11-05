@@ -24,9 +24,10 @@ app.use(cors());
 app.set("view engine", "ejs");
 
 // Routes
-app.use("/",async(res,req)=>{
-    res.res.send("Welcome")
-})
+// app.get (not app.use): app.use("/") matches every URL, so it answered every request
+app.get("/", (req, res) => {
+  res.send("Welcome");
+});
 app.use("/api/books", require("./routes/books"));
 app.use("/api/authors", require("./routes/authors"));
 app.use("/api/auth", require("./routes/auth"));
@@ -44,6 +45,6 @@ app.listen(port, () =>
   console.log(
     `Server is running in ${
       process.env.MODE_ENV || "development"
-    } mode http://localhost:5000`
+    } mode http://localhost:${port}`
   )
 );
