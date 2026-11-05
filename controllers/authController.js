@@ -45,7 +45,7 @@ const register= asyncHandler(async (req, res) => {
 const login= asyncHandler(async (req, res) => {
     const { error } = validateLoginUser(req.body);
     if (error) {
-        return res.status(400).json({ message: error.details[0].message ,message:'here'});
+        return res.status(400).json({ message: error.details[0].message });
     }
     let user = await User.findOne({ email: req.body.email }); 
     if (!user){

@@ -1,5 +1,5 @@
 const express = require("express");
-const { norFound, errorHandler } = require("./middlewares/errors");
+const { notFound, errorHandler } = require("./middlewares/errors");
 const helmet = require("helmet");
 const cors = require("cors");
 require("dotenv").config();
@@ -36,7 +36,7 @@ app.use("/password", require("./routes/password"));
 app.use("/api/upload", require("./routes/upload"));
 
 // Error Handlers Middlewares
-app.use(norFound);
+app.use(notFound);
 app.use(errorHandler);
 
 //runing the server

@@ -9,10 +9,10 @@ function verifyToken(req, res, next) {
             req.user = decoded;
             next();
         } catch (error) {
-            res.status(401).json({message:console.error(error)})
+            res.status(401).json({message:"Invalid token"})
         }
     }else{
-        res.status(401).json({message:"Invalid token else"})
+        res.status(401).json({message:"No token provided"})
     }
 };
 
