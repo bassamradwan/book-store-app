@@ -10,7 +10,8 @@ const { Author, validateCreateAuthor, validateUpdateAuthor } = require('../model
  */
 const getAllAuthors= asyncHandler(
     async (req, res) => {
-        const {pageNumber}=req.query;
+        // Without ?pageNumber= the value was undefined, so skip() got NaN. Default to page 1.
+        const pageNumber = Number(req.query.pageNumber) || 1;
         const authorsPerPage=2;
         const authorsList = await Author.find()
         .skip((pageNumber -1)*authorsPerPage)
@@ -50,7 +51,7 @@ const createAuthor = asyncHandler(
             return res.status(400).json({ message: error.details[0].message });
         }
         const author = new Author({
-            fristName: req.body.fristName,
+            firstName: req.body.firstName,
             lastName: req.body.lastName,
             nationality: req.body.nationality,
             image: req.body.image

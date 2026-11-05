@@ -13,9 +13,9 @@ const getAllBooks = asyncHandler(
         const { minPrice, maxPrice } = req.query;
         let books;
         if (minPrice && maxPrice) {
-            books = await Book.find({ price: { $gte: minPrice, $lte: maxPrice } }).populate("author", ["_id", "fristName", "lastName"]);
+            books = await Book.find({ price: { $gte: minPrice, $lte: maxPrice } }).populate("author", ["_id", "firstName", "lastName"]);
         } else {
-            books = await Book.find().populate("author", ["_id", "fristName", "lastName"]);
+            books = await Book.find().populate("author", ["_id", "firstName", "lastName"]);
         }
         res.status(200).json(books);
     }
